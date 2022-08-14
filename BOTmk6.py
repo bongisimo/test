@@ -257,7 +257,8 @@ class bot(ch.RoomManager):
     checkEm = ["https://i.imgur.com/am6jmOG.gif", "https://i.imgur.com/AFBHn16.jpg", "https://i.imgur.com/288LhLk.jpg", "https://i.imgur.com/Iiz4zJz.jpg",
                "https://i.imgur.com/yQTgNuI.jpg", "https://i.imgur.com/47a9x36.jpg", "https://i.imgur.com/bP1WUal.jpg", "https://i.imgur.com/FPuoPE1.jpg",
                "https://i.imgur.com/cyvN4UR.jpg", "https://i.imgur.com/amVJX94.jpg", "https://i.imgur.com/RL4hhza.png", "https://i.imgur.com/MHXU4P8.gif",
-               "https://i.imgur.com/fOd8n8E.png", "https://i.imgur.com/NBGlrua.jpg"]
+               "https://i.imgur.com/fOd8n8E.png", "https://i.imgur.com/NBGlrua.jpg", "https://i.imgur.com/q2cdmhV.jpg", "https://i.imgur.com/LFHqllR.png",
+               "https://i.imgur.com/gNcdfkA.jpg"]
 
 
     if message.body.lower().startswith("!tits"):

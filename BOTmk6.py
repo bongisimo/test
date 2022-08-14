@@ -648,12 +648,10 @@ class bot(ch.RoomManager):
         room.message(random.choice(checkEm))
       elif isTrips % 111 == 0:
         room.message(str(randRoll))
-        room.message("TRIPS CHECKED")
         room.message(random.choice(checkEm))
         room.message(random.choice(checkEm))
       elif isDubs % 11 == 0:
         room.message(str(randRoll))
-        room.message("DUBS CHECKED")
         room.message(random.choice(checkEm))
       else:
         room.message(str(randRoll))

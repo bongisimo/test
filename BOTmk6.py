@@ -254,6 +254,11 @@ class bot(ch.RoomManager):
 
     lmao = ["lmaoo"]
 
+    checkEm = ["https://i.imgur.com/am6jmOG.gif", "https://i.imgur.com/AFBHn16.jpg", "https://i.imgur.com/288LhLk.jpg", "https://i.imgur.com/Iiz4zJz.jpg",
+               "https://i.imgur.com/yQTgNuI.jpg", "https://i.imgur.com/47a9x36.jpg", "https://i.imgur.com/bP1WUal.jpg", "https://i.imgur.com/FPuoPE1.jpg",
+               "https://i.imgur.com/cyvN4UR.jpg", "https://i.imgur.com/amVJX94.jpg", "https://i.imgur.com/RL4hhza.png", "https://i.imgur.com/MHXU4P8.gif",
+               "https://i.imgur.com/fOd8n8E.png", "https://i.imgur.com/NBGlrua.jpg"]
+
 
     if message.body.lower().startswith("!tits"):
         room.message(random.choice(titties))
@@ -623,19 +628,33 @@ class bot(ch.RoomManager):
 
     randRoll = random.randint(1,10000)
     isDubs = randRoll % 100
+    isTrips = randRoll % 1000
 
     ##CHEATING
     if message.body.startswith("!roll dubs"):
       if user.name in str(room.modnames) or user.name == room.ownername:
         cheat = str(random.randint(1,99)) + random.choice(cheaterdubs)
         room.message(cheat)
+        room.message(random.choice(woo))
       else:
         room.message(str(randRoll))
     ##NORMAL ROLL
     elif cmd.lower() == "roll" and prfx:
-      if isDubs % 11 == 0:
+      # Quads check
+      if randRoll % 1111 == 0:
         room.message(str(randRoll))
-        room.message(random.choice(woo))
+        room.message(random.choice(checkEm))
+        room.message(random.choice(checkEm))
+        room.message(random.choice(checkEm))
+      elif isTrips % 111 == 0:
+        room.message(str(randRoll))
+        room.message("TRIPS CHECKED")
+        room.message(random.choice(checkEm))
+        room.message(random.choice(checkEm))
+      elif isDubs % 11 == 0:
+        room.message(str(randRoll))
+        room.message("DUBS CHECKED")
+        room.message(random.choice(checkEm))
       else:
         room.message(str(randRoll))
 
@@ -931,8 +950,8 @@ class bot(ch.RoomManager):
 
 
 rooms = ["bongstream", "chadstream"]
-username = "NEGRO"
-password = "Fuckyoubong1"
+username = "bongbot"
+password = "fucku12"
 
 bot.easy_start(rooms,username,password)
 

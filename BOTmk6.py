@@ -8,12 +8,17 @@ import sys
 
 
 
+
 class bot(ch.RoomManager):
   def onInit(self):
     self.setNameColor("FFFF00")
     self.setFontColor("000000")
     self.setFontFace("Ariel")
     self.setFontSize(11)
+
+  def onDisconnect(self,room):
+    self.setTimeout(169, self.stop)
+    bot.easy_start(rooms,username,password)
 
   def onMessage(self, room, user, message):
     print("[{0}] {1}: {2}".format(room.name, user.name.title(), message.body))
@@ -65,14 +70,15 @@ class bot(ch.RoomManager):
                 "!bong","!shotgun","!rape","!dd","!pour","!thisnigga","!what",
                 "!jew","!cocaine","!weed","!dafuq","!seph","!knifehit","!monica","!joey",
                 "!whatatime","!slowride","!deadniggas","!pstriple","!yablewit","!tanks",
-                "!s7", "!cripf","!heem","!sharks","!shot","!pitbull","!whogay","!roll",
+                "!cripf","!heem","!shot","!pitbull","!whogay","!roll",
                 "!random","!shot2","!mid","!loud","!will","!mcs","!pepe","!slots","!2010","!jackoff"
                 ,"!prrt", "!tc","!autoloud","!snek","!nigger","!gerbil","!ron","!cig","!mom","!poggers"
                 ,"!puggy","!ankh","!poison","!lol","!heroin","!n","!assrape","!ihateniggers","!crippledog",
                 "!fuckher","!dmx","!how2roulette","!cocaina","!yajewedit","!milkies","!lopez","!letsgo","!vamos",
                 "!cotton","!fwm","!sam","!koth","!eatdick","!spooky","!overdose","!nbomb","!dab","!modelo","!twu","!flamez",
                 "!votar", "!fag", "!friday","!trap", "!pahmp", "!dumpit", "!tits", "!ass" , "!puke" , "!hentai",
-                "!anime", "!nigstomp", "!tweaker", "!bongo", "!kneel", "!bongstream", "!labonga", "!eagles", "!mc", "!oldmc"]
+                "!nigstomp", "!tweaker", "!bongo", "!kneel", "!bongstream", "!labonga", "!eagles", "!gabongool", "!gary",
+                "!sherkchop", "!dunkedon", "!suckit"]
     
     cheaterdubs = ["11","22","33","44","55","66","77","88","99"]
 
@@ -260,6 +266,11 @@ class bot(ch.RoomManager):
                "https://i.imgur.com/fOd8n8E.png", "https://i.imgur.com/NBGlrua.jpg", "https://i.imgur.com/q2cdmhV.jpg", "https://i.imgur.com/LFHqllR.png",
                "https://i.imgur.com/gNcdfkA.jpg"]
 
+    die20 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+
+
+    if message.body.lower().startswith("!d20"):
+        room.message(random.choice(die20))
 
     if message.body.lower().startswith("!tits"):
         room.message(random.choice(titties))
@@ -611,11 +622,58 @@ class bot(ch.RoomManager):
     if cmd.lower() == "eagles" and prfx:
       room.message("https://bongstream.live/wp-content/uploads/2022/01/eagles.gif".format(room.name, user.name.title(), message.body))
 
-    if cmd.lower() == "mc" and prfx:
-      room.message("bongstream.apexmc.co (now in 1.18.2) 199.19.76.130:25706".format(room.name, user.name.title(), message.body))
-
     if cmd.lower() == "oldmc" and prfx:
       room.message("https://drive.google.com/file/d/1VdVWQkww5LU2ouLkKCEYPAhJ54H87gUy/view?usp=sharing".format(room.name, user.name.title(), message.body))
+
+    if cmd.lower() == "connor" and prfx:
+      room.message("https://bongstream.live/wp-content/uploads/2023/09/gkc.jpg".format(room.name, user.name.title(), message.body))
+
+    if cmd.lower() == "gabongool" and prfx:
+      room.message("https://bongstream.live/wp-content/uploads/2023/03/gabongol.jpeg".format(room.name, user.name.title(), message.body))
+
+    if cmd.lower() == "gary" and prfx:
+      room.message("https://imgur.io/BZOJgzU.gif".format(room.name, user.name.title(), message.body))
+
+    if cmd.lower() == "sherkchop" and prfx:
+      room.message("https://bongstream.live/wp-content/uploads/2023/06/sherk-crotch-chop-gif-resized.gif".format(room.name, user.name.title(), message.body))
+
+    if cmd.lower() == "dunkedon" and prfx:
+      room.message("https://bongstream.live/wp-content/uploads/2023/08/dunkedon.gif".format(room.name, user.name.title(), message.body))
+
+    if cmd.lower() == "suckit" and prfx:
+      room.message("https://bongstream.live/wp-content/uploads/2023/08/suckit.gif".format(room.name, user.name.title(), message.body))
+
+    randRoll = random.randint(1,10000)
+    isDubs = randRoll % 100
+    isTrips = randRoll % 1000
+
+    if cmd.lower() == "give" and prfx:
+      give = args.split(" ", 2)
+      buxFile = open(str(user.name)+".csv","r")
+      for line in buxFile:
+        balance = line     
+      buxFile.close()
+      print(give[0], "\n")
+      if (int(balance) > int(give[1])):
+        if path.isfile(str(give[0])+".csv") == False:
+          room.message("he need an account, mf prolly illegal".format(room.name, user.name.title(), message.body))
+        else:
+          buxFile = open(str(user.name)+".csv","w")
+          print(str(balance),"\n")
+          balance -= int(give[1])
+          print(int(balance),"\n")
+          buxFile.write(str(balance))
+          buxFile.close()
+          buxFile = open(str(give[0])+".csv","r")
+          for line in buxFile:
+            balance = line     
+          buxFile.close()
+          balance += int(give[1])
+          buxFile = open(str(give[0])+".csv","w")
+          buxFile.write(str(balance))
+          buxFile.close()
+      else:
+         room.message("ERROR: BROKE NIGGA ALERT".format(room.name, user.name.title(), message.body))
 
     ##WHOGAY
     if cmd.lower() == "whogay" and prfx:
@@ -627,31 +685,43 @@ class bot(ch.RoomManager):
       else:
         room.message("@"+str(gay).replace("!","").replace("#","")+ " ur gay lol")
 
-    randRoll = random.randint(1,10000)
-    isDubs = randRoll % 100
-    isTrips = randRoll % 1000
-
     ##CHEATING
-    if message.body.startswith("!roll dubs"):
-      if user.name in str(room.modnames) or user.name == room.ownername:
-        cheat = str(random.randint(1,99)) + random.choice(cheaterdubs)
-        room.message(cheat)
+##    if message.body.startswith("!roll dubs"):
+##      if user.name in str(room.modnames) or user.name == room.ownername:
+##        cheat = str(random.randint(1,99)) + random.choice(cheaterdubs)
+##        room.message(cheat)
+##        room.message(random.choice(checkEm))
+##        # bong bux addition
+##        buxFile = open(str(user.name)+".csv","r")
+##        for line in buxFile:
+##          balance = line     
+##        buxFile.close()
+##        balance = int(balance) + (int(cheat) % 100)
+##        buxFile = open(str(user.name)+".csv","w")
+##        buxFile.write(str(balance))
+##        buxFile.close()
+##        x = int(cheat) % 100
+##        room.message(user.name+" won "+str(x)+" BongBux from dubs!")
+##      else:
+##        room.message(str(randRoll))
+    ##NORMAL ROLL
+    if cmd.lower() == "roll" and prfx:
+      # 10000 check
+      if randRoll == 10000:
+        room.message(str(randRoll))
+        room.message("https://youtu.be/Ma0KmHILhzg")
         room.message(random.choice(checkEm))
-        # bong bux addition
+        room.message(random.choice(checkEm))
+        room.message(random.choice(checkEm))
         buxFile = open(str(user.name)+".csv","r")
         for line in buxFile:
           balance = line     
         buxFile.close()
-        balance = int(balance) + (int(cheat) % 100)
+        balance = int(balance) + randRoll
         buxFile = open(str(user.name)+".csv","w")
         buxFile.write(str(balance))
         buxFile.close()
-        x = int(cheat) % 100
-        room.message(user.name+" won "+str(x)+" BongBux from dubs!")
-      else:
-        room.message(str(randRoll))
-    ##NORMAL ROLL
-    elif cmd.lower() == "roll" and prfx:
+        room.message("THIS NIGGA "+user.name+" JUST GOT 10000 BONGBUX.")
       # Quads check
       if randRoll % 1111 == 0:
         room.message(str(randRoll))
@@ -673,13 +743,20 @@ class bot(ch.RoomManager):
         room.message(random.choice(checkEm))
         buxFile = open(str(user.name)+".csv","r")
         for line in buxFile:
-          balance = line     
+          balance = line
         buxFile.close()
-        balance = int(balance) + isTrips
-        buxFile = open(str(user.name)+".csv","w")
-        buxFile.write(str(balance))
-        buxFile.close()
-        room.message(user.name+" won "+str(isTrips)+" BongBux from trips!")
+        if isTrips == 0:
+          balance = int(balance) + 1000
+          buxFile = open(str(user.name)+".csv","w")
+          buxFile.write(str(balance))
+          buxFile.close()   
+          room.message(user.name+" won 1000 BongBux from trips!")
+        else:
+          balance = int(balance) + isTrips
+          buxFile = open(str(user.name)+".csv","w")
+          buxFile.write(str(balance))
+          buxFile.close()   
+          room.message(user.name+" won "+str(isTrips)+" BongBux from trips!")
       elif isDubs % 11 == 0:
         room.message(str(randRoll))
         room.message(random.choice(checkEm))
@@ -687,11 +764,18 @@ class bot(ch.RoomManager):
         for line in buxFile:
           balance = line     
         buxFile.close()
-        balance = int(balance) + isDubs
-        buxFile = open(str(user.name)+".csv","w")
-        buxFile.write(str(balance))
-        buxFile.close()
-        room.message(user.name+" won "+str(isDubs)+" BongBux from dubs!")
+        if isDubs == 0:
+          balance = int(balance) + 100
+          buxFile = open(str(user.name)+".csv","w")
+          buxFile.write(str(balance))
+          buxFile.close()
+          room.message(user.name+" won 100 BongBux from dubs!")
+        else:
+          balance = int(balance) + isDubs
+          buxFile = open(str(user.name)+".csv","w")
+          buxFile.write(str(balance))
+          buxFile.close()
+          room.message(user.name+" won "+str(isDubs)+" BongBux from dubs!")
       else:
         room.message(str(randRoll))
 
@@ -984,11 +1068,9 @@ class bot(ch.RoomManager):
 
 
 
-
-
-rooms = ["bongbottester"]
-username = "bongbot"
-password = "fucku12"
+rooms = ["chadstream", "bongstream"]
+username = "NEGRO"
+password = "Fuckyoubong1"
 
 bot.easy_start(rooms,username,password)
 
